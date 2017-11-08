@@ -1,0 +1,337 @@
+APL tested builds of this project used GDAL obtained from http://download.gisinternals.com/sdk/downloads/release-1600-x64-gdal-2-1-3-mapserver-7-0-4.zip on 11-08-2017.
+
+Simply extract the contents of the zip to this folder ('<Project Root>/Dependencies/') before attempting to compile this application.
+
+GDAL_bin
+├── bin
+│   ├── cairo.dll
+│   ├── cfitsio.dll
+│   ├── curl
+│   │   ├── curl-ca-bundle.crt
+│   │   ├── curl.exe
+│   │   └── openssl.exe
+│   ├── expat.dll
+│   ├── freexl.dll
+│   ├── fribidi.dll
+│   ├── gdal
+│   │   ├── apps
+│   │   │   ├── gdaladdo.exe
+│   │   │   ├── gdalbuildvrt.exe
+│   │   │   ├── gdal_contour.exe
+│   │   │   ├── gdaldem.exe
+│   │   │   ├── gdalenhance.exe
+│   │   │   ├── gdal_grid.exe
+│   │   │   ├── gdalinfo.exe
+│   │   │   ├── gdallocationinfo.exe
+│   │   │   ├── gdalmanage.exe
+│   │   │   ├── gdal_rasterize.exe
+│   │   │   ├── gdalserver.exe
+│   │   │   ├── gdalsrsinfo.exe
+│   │   │   ├── gdaltindex.exe
+│   │   │   ├── gdaltransform.exe
+│   │   │   ├── gdal_translate.exe
+│   │   │   ├── gdalwarp.exe
+│   │   │   ├── gnmanalyse.exe
+│   │   │   ├── gnmmanage.exe
+│   │   │   ├── nearblack.exe
+│   │   │   ├── ogr2ogr.exe
+│   │   │   ├── ogrinfo.exe
+│   │   │   ├── ogrlineref.exe
+│   │   │   ├── ogrtindex.exe
+│   │   │   └── testepsg.exe
+│   │   ├── csharp
+│   │   │   ├── createdata.exe
+│   │   │   ├── GDALAdjustContrast.exe
+│   │   │   ├── GDALColorTable.exe
+│   │   │   ├── gdalconst_csharp.dll
+│   │   │   ├── gdalconst_wrap.dll
+│   │   │   ├── GDALCreateCopy.exe
+│   │   │   ├── gdal_csharp.dll
+│   │   │   ├── GDALDatasetRasterIO.exe
+│   │   │   ├── GDALDatasetWrite.exe
+│   │   │   ├── GDALGetHistogram.exe
+│   │   │   ├── GDALInfo.exe
+│   │   │   ├── GDALMemDataset.exe
+│   │   │   ├── GDALOverviews.exe
+│   │   │   ├── GDALReadDirect.exe
+│   │   │   ├── GDALRead.exe
+│   │   │   ├── gdal_wrap.dll
+│   │   │   ├── GDALWrite.exe
+│   │   │   ├── ogr_csharp.dll
+│   │   │   ├── OGRFeatureEdit.exe
+│   │   │   ├── OGRGEOS.exe
+│   │   │   ├── ogrinfo.exe
+│   │   │   ├── OGRLayerAlg.exe
+│   │   │   ├── ogr_wrap.dll
+│   │   │   ├── osr_csharp.dll
+│   │   │   ├── OSRTransform.exe
+│   │   │   ├── osr_wrap.dll
+│   │   │   ├── ReadXML.exe
+│   │   │   ├── VSIMem.exe
+│   │   │   └── WKT2WKB.exe
+│   │   ├── java
+│   │   │   ├── gdalconstjni.dll
+│   │   │   ├── gdal.jar
+│   │   │   ├── gdaljni.dll
+│   │   │   ├── ogrjni.dll
+│   │   │   └── osrjni.dll
+│   │   ├── plugins
+│   │   │   ├── gdal_BAG.dll
+│   │   │   ├── gdal_ECW_JP2ECW.dll
+│   │   │   ├── gdal_FITS.dll
+│   │   │   ├── gdal_GEOR.dll
+│   │   │   ├── gdal_GMT.dll
+│   │   │   ├── gdal_HDF4.dll
+│   │   │   ├── gdal_HDF4Image.dll
+│   │   │   ├── gdal_HDF5.dll
+│   │   │   ├── gdal_HDF5Image.dll
+│   │   │   ├── gdal_KEA.dll
+│   │   │   ├── gdal_MG4Lidar.dll
+│   │   │   ├── gdal_MrSID.dll
+│   │   │   ├── gdal_netCDF.dll
+│   │   │   ├── ogr_AmigoCloud.dll
+│   │   │   └── ogr_OCI.dll
+│   │   ├── plugins-external
+│   │   │   └── ogr_FileGDB.dll
+│   │   ├── plugins-optional
+│   │   │   ├── gdal_ECW_JP2ECW.dll
+│   │   │   ├── ogr_MSSQLSpatial.dll
+│   │   │   └── ogr_PG.dll
+│   │   └── python
+│   │       ├── gdalconst.py
+│   │       ├── gdal.py
+│   │       ├── ogr.py
+│   │       ├── osgeo
+│   │       │   ├── gdal_array.py
+│   │       │   ├── gdalconst.py
+│   │       │   ├── _gdalconst.pyd
+│   │       │   ├── gdalnumeric.py
+│   │       │   ├── gdal.py
+│   │       │   ├── _gdal.pyd
+│   │       │   ├── gnm.py
+│   │       │   ├── __init__.py
+│   │       │   ├── ogr.py
+│   │       │   ├── _ogr.pyd
+│   │       │   ├── osr.py
+│   │       │   └── _osr.pyd
+│   │       ├── osr.py
+│   │       └── scripts
+│   │           ├── epsg_tr.py
+│   │           ├── esri2wkt.py
+│   │           ├── gcps2vec.py
+│   │           ├── gcps2wld.py
+│   │           ├── gdal2tiles.py
+│   │           ├── gdal2xyz.py
+│   │           ├── gdal_auth.py
+│   │           ├── gdal_calc.py
+│   │           ├── gdalchksum.py
+│   │           ├── gdalcompare.py
+│   │           ├── gdal_edit.py
+│   │           ├── gdal_fillnodata.py
+│   │           ├── gdalident.py
+│   │           ├── gdalimport.py
+│   │           ├── gdal_merge.py
+│   │           ├── gdalmove.py
+│   │           ├── gdal_pansharpen.py
+│   │           ├── gdal_polygonize.py
+│   │           ├── gdal_proximity.py
+│   │           ├── gdal_retile.py
+│   │           ├── gdal_sieve.py
+│   │           ├── mkgraticule.py
+│   │           ├── pct2rgb.py
+│   │           └── rgb2pct.py
+│   ├── gdal201.dll
+│   ├── gdal-data
+│   │   ├── compdcs.csv
+│   │   ├── coordinate_axis.csv
+│   │   ├── cubewerx_extra.wkt
+│   │   ├── datum_shift.csv
+│   │   ├── ecw_cs.wkt
+│   │   ├── ellipsoid.csv
+│   │   ├── epsg.wkt
+│   │   ├── esri_extra.wkt
+│   │   ├── esri_StatePlane_extra.wkt
+│   │   ├── esri_Wisconsin_extra.wkt
+│   │   ├── gcs.csv
+│   │   ├── gcs.override.csv
+│   │   ├── gdal_datum.csv
+│   │   ├── gdalicon.png
+│   │   ├── GDALLogoBW.svg
+│   │   ├── GDALLogoColor.svg
+│   │   ├── GDALLogoGS.svg
+│   │   ├── gdalvrt.xsd
+│   │   ├── geoccs.csv
+│   │   ├── gml_registry.xml
+│   │   ├── gt_datum.csv
+│   │   ├── gt_ellips.csv
+│   │   ├── header.dxf
+│   │   ├── inspire_cp_BasicPropertyUnit.gfs
+│   │   ├── inspire_cp_CadastralBoundary.gfs
+│   │   ├── inspire_cp_CadastralParcel.gfs
+│   │   ├── inspire_cp_CadastralZoning.gfs
+│   │   ├── netcdf_config.xsd
+│   │   ├── nitf_spec.xml
+│   │   ├── nitf_spec.xsd
+│   │   ├── ogrvrt.xsd
+│   │   ├── osmconf.ini
+│   │   ├── ozi_datum.csv
+│   │   ├── ozi_ellips.csv
+│   │   ├── pci_datum.txt
+│   │   ├── pci_ellips.txt
+│   │   ├── pcs.csv
+│   │   ├── pcs.override.csv
+│   │   ├── prime_meridian.csv
+│   │   ├── projop_wparm.csv
+│   │   ├── ruian_vf_ob_v1.gfs
+│   │   ├── ruian_vf_st_uvoh_v1.gfs
+│   │   ├── ruian_vf_st_v1.gfs
+│   │   ├── ruian_vf_v1.gfs
+│   │   ├── s57agencies.csv
+│   │   ├── s57attributes_aml.csv
+│   │   ├── s57attributes.csv
+│   │   ├── s57attributes_iw.csv
+│   │   ├── s57expectedinput.csv
+│   │   ├── s57objectclasses_aml.csv
+│   │   ├── s57objectclasses.csv
+│   │   ├── s57objectclasses_iw.csv
+│   │   ├── seed_2d.dgn
+│   │   ├── seed_3d.dgn
+│   │   ├── stateplane.csv
+│   │   ├── trailer.dxf
+│   │   ├── unit_of_measure.csv
+│   │   ├── vdv452.xml
+│   │   ├── vdv452.xsd
+│   │   ├── vertcs.csv
+│   │   └── vertcs.override.csv
+│   ├── geos_c.dll
+│   ├── geos.dll
+│   ├── hdf5_cpp.dll
+│   ├── hdf5.dll
+│   ├── hdf5_hl_cpp.dll
+│   ├── hdf5_hl.dll
+│   ├── hdfdll.dll
+│   ├── iconv.dll
+│   ├── libcurl.dll
+│   ├── libeay32.dll
+│   ├── libecwj2.dll
+│   ├── libfcgi.dll
+│   ├── libkea.dll
+│   ├── libmysql.dll
+│   ├── libpq.dll
+│   ├── libtiff.dll
+│   ├── libxml2.dll
+│   ├── lti_dsdk_9.1.dll
+│   ├── lti_lidar_dsdk_1.1.dll
+│   ├── mapserver.dll
+│   ├── mfhdfdll.dll
+│   ├── ms
+│   │   ├── apps
+│   │   │   ├── legend.exe
+│   │   │   ├── mapserv.exe
+│   │   │   ├── msencrypt.exe
+│   │   │   ├── scalebar.exe
+│   │   │   ├── shp2img.exe
+│   │   │   ├── shptree.exe
+│   │   │   ├── shptreetst.exe
+│   │   │   ├── shptreevis.exe
+│   │   │   ├── sortshp.exe
+│   │   │   └── tile4ms.exe
+│   │   ├── csharp
+│   │   │   ├── drawmapDirect.exe
+│   │   │   ├── drawmapDirectPrint.exe
+│   │   │   ├── drawmap.exe
+│   │   │   ├── drawmapGDIPlus.exe
+│   │   │   ├── drawquery.exe
+│   │   │   ├── getbytes.exe
+│   │   │   ├── HTMLtemplate.exe
+│   │   │   ├── mapscript_csharp.dll
+│   │   │   ├── mapscript.dll
+│   │   │   ├── RFC24.exe
+│   │   │   ├── shapeinfo.exe
+│   │   │   └── shpdump.exe
+│   │   ├── java
+│   │   │   ├── javamapscript.dll
+│   │   │   └── mapscript.jar
+│   │   ├── plugins
+│   │   │   ├── mssql2008
+│   │   │   │   └── msplugin_mssql2008.dll
+│   │   │   └── oci
+│   │   │       └── msplugin_oracle.dll
+│   │   └── python
+│   │       ├── mapscript.py
+│   │       └── _mapscript.pyd
+│   ├── msvcp100.dll
+│   ├── msvcr100.dll
+│   ├── NCSEcw.dll
+│   ├── netcdf.dll
+│   ├── openjp2.dll
+│   ├── proj
+│   │   ├── apps
+│   │   │   ├── cs2cs.exe
+│   │   │   ├── geod.exe
+│   │   │   ├── nad2bin.exe
+│   │   │   └── proj.exe
+│   │   └── SHARE
+│   │       ├── alaska
+│   │       ├── conus
+│   │       ├── epsg
+│   │       ├── esri
+│   │       ├── esri.extra
+│   │       ├── GL27
+│   │       ├── hawaii
+│   │       ├── IGNF
+│   │       ├── MD
+│   │       ├── nad27
+│   │       ├── nad83
+│   │       ├── nad.lst
+│   │       ├── ntf_r93.gsb
+│   │       ├── ntv1_can.dat
+│   │       ├── null
+│   │       ├── nzgd2kgrid0005.gsb
+│   │       ├── other.extra
+│   │       ├── proj_def.dat
+│   │       ├── prvi
+│   │       ├── stgeorge
+│   │       ├── stlrnc
+│   │       ├── stpaul
+│   │       ├── TN
+│   │       ├── WI
+│   │       ├── WO
+│   │       └── world
+│   ├── proj.dll
+│   ├── spatialite.dll
+│   ├── sqlite3.dll
+│   ├── ssleay32.dll
+│   ├── szip.dll
+│   ├── tbb.dll
+│   ├── xdrdll.dll
+│   ├── xerces-c_3_1.dll
+│   └── zlib1.dll
+├── changelog.txt
+├── doc
+│   ├── gdal_deps.txt
+│   ├── gdal_formats.txt
+│   ├── gdal_revision.txt
+│   ├── gdal_version.txt
+│   ├── ms_deps.txt
+│   ├── ms_revision.txt
+│   ├── ms_version.txt
+│   └── ogr_formats.txt
+├── ECW50License.rtf
+├── ECW5License.rtf
+├── ECWLicense.rtf
+├── FileGDBLicense.rtf
+├── FITSLicense.rtf
+├── GDALLicense.rtf
+├── GISInternalsLicense.rtf
+├── HDF4License.rtf
+├── HDF5License.rtf
+├── license.txt
+├── MRSIDLicense.rtf
+├── NetCDFLicense.rtf
+├── OCILicense.rtf
+├── read-me.txt
+├── SDKShell.bat
+└── SZIPLicense.rtf
+
+25 directories, 305 files
