@@ -5,7 +5,7 @@ For more information on this and other efforts, please visit [JHU/APL](http://ww
 ## WVCal
 WorldView Radiometric Calibration Tool
 
-Performs radiometric calibration to top of atmosphere radiance for WorldView NITF images and saves resulting images in uncompressed ENVI format. Intended to perform the same function as ENVI's built-in calibration, but at far faster speeds.
+Performs radiometric calibration to top of atmosphere radiance for WorldView NITF images and saves resulting images in uncompressed ENVI format.
 	
 Calibration info is extracted from the NITF file and an accompanying IMD file. The IMD file must have the same base file name as the NITF. If a tar file, rather than IMD, with the NITF base name is present, it will be searched automatically for the first IMD file within it.
 
