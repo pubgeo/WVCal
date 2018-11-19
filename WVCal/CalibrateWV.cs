@@ -102,7 +102,7 @@ namespace WVCal {
 				byte[] inputBuffer = new byte[width * rowHeight * bytesPerSample];
 				double[][] dBuffer = new double[rowHeight][];
 				byte[] outputBuffer = new byte[width * rowHeight * bytesPerOutputSample];
-				
+
 				for (int band = 1; band <= nBands; band++) {
 					//read data
 					System.Runtime.InteropServices.GCHandle handle = System.Runtime.InteropServices.GCHandle.Alloc(inputBuffer, System.Runtime.InteropServices.GCHandleType.Pinned);
@@ -115,9 +115,10 @@ namespace WVCal {
 					convertByteArrayToDouble2D(dBuffer, inputBuffer, inputDataType);
 
 					//calibrate
+					// doesn't calibrate any values that are already zero (e.g. image padding)
 					for (int y = 0; y < rowHeight; y++) {
 						for (int x = 0; x < width; x++) {
-							dBuffer[y][x] = (fineTuneGains[band - 1] * dBuffer[y][x] * (bandInfos[band - 1].absCalFactor / bandInfos[band - 1].effectiveBandwidth) + fineTuneOffsets[band - 1]) / 10 * scaleFactor;
+							if (dBuffer[y][x] != 0) dBuffer[y][x] = (fineTuneGains[band - 1] * dBuffer[y][x] * (bandInfos[band - 1].absCalFactor / bandInfos[band - 1].effectiveBandwidth) + fineTuneOffsets[band - 1]) / 10 * scaleFactor;
 						}
 					}
 
@@ -284,11 +285,14 @@ namespace WVCal {
 				gcps[3] = GCPtmp;
 				//write GCPs
 				for (int i = 0; i < gcps.Length; i++) {
-					tw.WriteLine(" " + gcps[i].GCPPixel + ", " + gcps[i].GCPLine + ", " + gcps[i].GCPY + ", " + gcps[i].GCPX + ((i == gcps.Length - 1) ? "}" : ""));
+					tw.WriteLine(" " + gcps[i].GCPPixel + ", " + gcps[i].GCPLine + ", " + gcps[i].GCPY + ", " + gcps[i].GCPX + ((i == gcps.Length - 1) ? "}" : ","));
 				}
 			}
 
 			tw.WriteLine("pseudo projection info = {Geographic Lat/Lon, WGS-84, units=Degrees}");
+
+			//write satellite ID
+			if (bandInfos[0].satelliteName != null) tw.WriteLine("sensor id = {" + bandInfos[0].satelliteName + "}");
 
 			tw.WriteLine("band names = {");
 			for (int i = 0; i < bandInfos.Length; i++) {
@@ -323,17 +327,17 @@ namespace WVCal {
 			string rpc2 = ds.GetMetadataItem("RPC00B", "TRE");
 			if (rpc2 != null) {//parse RPC data if available
 				int charPos = 1 + 7 + 7;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 6))); charPos += 6;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 8))); charPos += 8;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 9))); charPos += 9;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 6))); charPos += 6;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 8))); charPos += 8;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 9))); charPos += 9;
-				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;
-				for (int i = 0; i < 80; i++) { rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 12))); charPos += 12; }
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 6))); charPos += 6;//line offset [pixels]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;//sample offset [pixels]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 8))); charPos += 8;//geodetic latitude offset [degrees]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 9))); charPos += 9;//geodetic longitude offset [degrees]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;//geodetic height offset [meters]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 6))); charPos += 6;//line scale [pixels]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;//sample scale [pixels]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 8))); charPos += 8;//geodetic latitude scale [degrees]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 9))); charPos += 9;//geodetic longitude scale [degrees]
+				rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 5))); charPos += 5;//geodetic height scale [meters]
+				for (int i = 0; i < 80; i++) { rpcCoef.Add(double.Parse(rpc2.Substring(charPos, 12))); charPos += 12; }//numerator and denominator coefficients
 				rpcCoef.Add(0);
 				rpcCoef.Add(0);
 				rpcCoef.Add(1);
