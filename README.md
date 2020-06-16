@@ -1,6 +1,3 @@
-# JHU/APL pubgeo
-Open source software and public data for geospatial computer vision. For more information, please visit [JHU/APL](https://www.jhuapl.edu/pubgeo/).
-
 ## WVCal
 WorldView Radiometric Calibration Tool
 
